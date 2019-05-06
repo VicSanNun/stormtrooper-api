@@ -47,9 +47,4 @@ app.use((err, req, res, next)=>{
 });
 
 //Listener
-const server = app.listen(3000, ()=>{
-    const host = server.address().address;
-    const port = server.address().port;
-
-    console.log(`Host: ${host} e Port: ${port}`);
-});
+module.exports = app;
