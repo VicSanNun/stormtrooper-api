@@ -32,10 +32,7 @@ app.use((req, res, next)=>{
 });
 
 //Routes
-app.get('/', (req, res)=>{
-    res.status(201);
-    res.send("Hello World !");
-});
+app.use('/', require('./routes'));
 
 //Tratamento de Erros
 app.use((req, res, next)=>{
