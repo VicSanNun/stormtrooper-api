@@ -1,24 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.send("Get all Stormtrooper");
-});
+const StormtrooperController = require('../controllers/StormtrooperController.js');
 
-router.get('/:_id', (req, res)=>{
-    res.send("Get a specific Stromtrooper by id");
-});
+router.get('/', StormtrooperController.getAll);
 
-router.post('/', (req, res)=>{
-    res.send("Create a new Stormtrooper");
-});
+router.get('/:_id', StormtrooperController.getById);
 
-router.put('/:_id', (req, res)=>{
-    res.send("Update a Stormtrooper");
-});
+router.post('/', StormtrooperController.create);
 
-router.delete('/:_id', (req, res)=>{
-    res.send("Delete a Stormtrooper");
-});
+router.put('/:_id', StormtrooperController.update);
+
+router.delete('/:_id', StormtrooperController.remove);
 
 module.exports = router;
