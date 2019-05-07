@@ -1,25 +1,51 @@
 "use strict";
 
-class StormtrooperController {
+const debug = require('debug');
+
+class StormtrooperController{
+    constructor(StormtrooperModel){
+        this.model = StormtrooperModel;
+    }
+
     getAll(req, res, next){
-        res.send("Get All Stormtrooper");
+        this.model.find({}, (err, data)=>{
+            if(err) return(next(err));
+            res.json(data);
+        });
     }
 
     getById(req, res, next){
-        res.send("Get a specific stormtrooper by id");
+        const _id = req.params._id;
+        this.model.findOne(_id, (err, data)=>{
+            if(err) return(next(err));
+            res.json(data);
+        });
     }
 
     create(req, res, next){
-        res.send("Create a Stormtrooper");
+        const body = req.body;
+        this.model.create(body, (err, data)=>{
+            if(err) return(next(err));
+            res.json(data);
+        });
     }
 
     update(req, res, next){
-        res.send("Update a Stormtrooper");
+        const _id = req.params._id;
+        const body = req.body;
+        this.model.update(_id, (err, data)=>{
+            if(err) return(next(err));
+            res.json(data);
+        });
     }
 
     remove(req, res, next){
-        res.send("Remove a Stormtrooper");
+        const _id = req.params._id;
+        this.model.remove(_id, (err, data)=>{
+            if(err) return(next(err));
+            res.json(data);
+        });
     }
 }
 
-module.exports = new StormtrooperController();
+module.exports = (StormtrooperModel) => new StormtrooperController(StormtrooperModel);
