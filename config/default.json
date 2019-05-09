@@ -5,5 +5,6 @@
         "server":"localhost",
         "port":27017,
         "database":"livro_nodejs"
-    }
+    },
+    "jwtTokenSecret": "Death Star"
 }
