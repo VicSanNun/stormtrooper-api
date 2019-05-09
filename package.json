@@ -1,0 +1,27 @@
+{
+  "name": "stormtrooper-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/www",
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.4",
+    "body-parser": "^1.19.0",
+    "config": "^3.1.0",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.6",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongojs": "^0.9.11",
+    "mongoose": "^5.5.6",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0"
+  }
+}
