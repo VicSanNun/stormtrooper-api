@@ -4,7 +4,8 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-
+const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
 const app = express();
 
 //Middlewares
@@ -24,6 +25,18 @@ app.use((req, res, next)=>{
         next();
     }
 });
+
+app.use(passport.initialize());
+passport.use(
+    new BasicStrategy((username, password, done)=>{
+        if(username.valueOf() === 'rebels' && password.valueOf() === '1138'){
+            return done(null, true);
+        }
+        else{
+            return done(null, false);
+        }
+    }) 
+);
 
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
