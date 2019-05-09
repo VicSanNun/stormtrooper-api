@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
-const mongo = require('../db/mongo');
-const StormtrooperModel = require('../models/StormtrooperModel')(mongo);
+const mongoose = require('../db/mongoose');
+const StormtrooperModel = require('../models/StormtrooperModel')(mongoose);
 const StormtrooperController = require('../controllers/StormtrooperController')(StormtrooperModel);
 
-router.get('/', StormtrooperController.getAll.bind(StormtrooperController));
+router.get('/', passport.authenticate('basic', {session:false}) ,StormtrooperController.getAll.bind(StormtrooperController));
 
-router.get('/:_id', StormtrooperController.getById.bind(StormtrooperController));
+router.get('/:_id', passport.authenticate('basic', {session:false}), StormtrooperController.getById.bind(StormtrooperController));
 
 router.post('/', StormtrooperController.create.bind(StormtrooperController));
 
